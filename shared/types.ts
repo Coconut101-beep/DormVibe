@@ -1,0 +1,52 @@
+export interface Product {
+  name: string;
+  category: 'Lighting' | 'Bedding' | 'Desk' | 'Wall Decor' | 'Storage' | 'Plants' | 'Textiles' | 'Tech';
+  priceRange: string;
+  searchQuery: string;
+  hotspot?: {
+    x: number;  // 0-100, percentage from left
+    y: number;  // 0-100, percentage from top
+  };
+}
+
+export interface GeneratedContent {
+  vibeName: string;
+  description: string;
+  narrationScript: string;
+  imagePrompt: string;
+  layoutTips: string[];
+  products: Product[];
+}
+
+export interface MediaContent {
+  imageUrl?: string;
+  audioUrl?: string;
+}
+
+export interface QuizData {
+  interests: string[];
+  colorPalette: string;
+  budget: number;
+  isInternational: boolean;
+  country?: string;
+  priority: string;
+}
+
+export interface GenerationStatus {
+  step: string;
+  status: 'pending' | 'processing' | 'completed' | 'error';
+  data?: any;
+}
+
+export interface ImageCustomizationRequest {
+  originalImageUrl: string;
+  customizationPrompt: string;
+  vibeName: string;
+  color?: string;
+  layout?: string;
+  style?: string;
+}
+
+export interface ImageCustomizationResponse {
+  newImageUrl: string;
+}

@@ -1,270 +1,144 @@
-# DormVibe 🏠
+# DormVibe 🏠✨
 
-AI-powered student housing discovery and roommate matching platform designed to help university students find accommodation, roommates, and communities that match their lifestyle, personality, and living preferences.
+**DormVibe** is an AI-powered dorm room styling assistant for college students. By taking a simple "vibe quiz," students can generate a complete room design package including a mood board and an audio walkthrough—all powered by the MiniMax AI API.
 
----
+## Vercel Link:
+[https://ig-1000011.vercel.app/](https://ig-1000011-azurelightning7-azurelightning7s-projects.vercel.app/)
 
-## Overview
+## 🚀 Getting Started
 
-Finding student accommodation is often based on price, availability, and location alone. Students rarely receive meaningful insights into roommate compatibility, room atmosphere, study habits, or social preferences before making housing decisions.
+### Prerequisites
 
-DormVibe addresses this challenge through a personalized recommendation experience that combines preference-based matching, lifestyle analysis, and interactive room exploration.
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) (usually comes with Node.js)
 
-The project was originally developed during the UNNC Hackathon and later refined as a portfolio project.
+### Installation
 
----
+1. **Clone the repository** (if you haven't already):
+   ```bash
+   git clone <repository-url>
+   cd dormvibe
+   ```
 
-## Problem Statement
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-Students frequently encounter:
+### 🔑 Environment Variables
 
-- Poor roommate compatibility
-- Limited understanding of room environments before booking
-- Generic accommodation recommendations
-- Difficulty finding communities aligned with their interests
+Create a `.env` file in the root directory (if it doesn't exist) and add your MiniMax API key:
 
-DormVibe introduces a more personalized approach by matching students based on lifestyle preferences and generating tailored room recommendations.
-
----
-
-## Key Features
-
-### User Authentication
-
-Secure user registration and login experience.
-
-### Personal Preference Quiz
-
-Collects lifestyle, study habits, social preferences, and accommodation requirements.
-
-### Room Recommendation Engine
-
-Generates personalized accommodation suggestions based on quiz responses.
-
-### Room DNA Analysis
-
-Visual compatibility analysis that summarizes user preferences and living style.
-
-### Student Dashboard
-
-Allows users to manage profiles and recommendation results.
-
-### Checkout Flow
-
-Simulated booking process for selected accommodation options.
-
-### Responsive Design
-
-Optimized experience across desktop and mobile devices.
-
-### Interactive Visual Components
-
-Enhanced user engagement through animated interfaces and interactive room exploration.
-
----
-
-## Screenshots
-
-### Landing Page
-
-Screenshots can be found under: docs/screenshots/
-
----
-
-## Technology Stack
-
-### Frontend
-
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- React Router
-
-### Backend
-
-- Express.js
-- Supabase
-
-### State Management
-
-- Zustand
-
-### UI & Animation
-
-- Framer Motion
-- Lucide React
-
-### Visual Components
-
-- React Three Fiber
-- Drei
-
----
-
-## Project Structure
-
-```
-DormVibe/
-│
-├── docs/
-│   ├── architecture/
-│   ├── testing/
-│   └── screenshots/
-│
-├── src/
-│   ├── pages/
-│   ├── components/
-│   ├── store/
-│   ├── services/
-│   └── assets/
-│
-└── README.md
+```env
+MINIMAX_API_KEY=your_minimax_api_key_here
+MINIMAX_BASE_URL=https://api.minimaxi.com/v1
+MINIMAX_TTS_MODEL=speech-2.8-hd
+MINIMAX_TTS_VOICE_ID=English_expressive_narrator
 ```
 
----
+> **Note**: Never commit your `.env` file or expose your API key in frontend code.
 
-## System Architecture
+### 🛠️ Running the App
 
-Additional documentation can be found in:
+You can run both the frontend and backend concurrently using a single command:
 
-```
-- docs/architecture/system-overview.md
-- docs/architecture/frontend-architecture.md
-```
-
-Architecture diagrams are included within the architecture folder.
-
----
-
-## My Contribution
-
-### Aditya Agrawal
-
-Primary responsibilities included:
-
-- Designing the complete user journey and application flow
-- Creating UI/UX layouts and wireframes in Figma
-- Developing core frontend pages using React and TypeScript
-- Building responsive user interfaces with Tailwind CSS
-- Managing GitHub repository structure and version control
-- Coordinating user testing sessions
-- Iterating designs based on user feedback
-
-### Pages Developed
-
-- Landing Page
-- Login Page
-- Personal Quiz
-- Room Recommendation
-- Room DNA Analysis
-- Checkout Flow
-- User Profile Dashboard
-
----
-
-## Team Contributions
-
-### Aditya Agrawal
-
-- UI/UX Design
-- User Flow Design
-- Frontend Development
-- Repository Management
-- User Testing
-
-### Team Member B
-
-- Backend Development
-- API Integration
-- Recommendation Logic
-
-### Team Member C
-
-- Business Model Development
-- Pitch Preparation
-- Product Ideation
-
-### Additional Team Members
-
-- Market Research
-- Financial Planning
-
----
-
-## User Testing
-
-DormVibe was evaluated by approximately 20 students and staff members.
-
-Key improvements were implemented based on feedback collected from 10 active participants, including:
-
-- Improved navigation flow
-- Simplified onboarding process
-- Enhanced room recommendation presentation
-- Better accessibility and usability
-
-Further details can be found in:
-
-```
-docs/testing/user-testing.md
+```bash
+npm run dev
 ```
 
----
+- **Frontend**: Vite will print the URL in your terminal (usually `http://localhost:5173/`, or the next available port)
+- **Backend**: `http://localhost:3001`
 
-## Development Process
+The frontend is configured to proxy API requests to the backend automatically.
 
-The project followed an iterative product development workflow:
+## 🏗️ Tech Stack
 
-1. Problem Identification
-2. User Research
-3. Wireframing and UI Design
-4. Frontend Development
-5. Backend Integration
-6. User Testing
-7. Product Iteration
-8. Final Presentation
+- **Frontend**: React (with Vite), Tailwind CSS, Framer Motion, Lucide React, Zustand
+- **Backend**: Node.js, Express, Axios
+- **AI Integration**: MiniMax API (Text, Image, TTS)
+- **Communication**: Server-Sent Events (SSE) for real-time generation progress
 
----
+## 📂 Project Structure
 
-## Awards
+- `src/`: React frontend source code
+- `api/`: Express backend source code
+- `shared/`: Shared TypeScript types
+- `public/`: Static assets
 
-🏆 UNNC Hackathon 2026 — 2nd Place
+## 🌟 Features
 
-🏆 UNNC Hackathon 2026 — Most Valuable Business Idea
+1. **Vibe Quiz**: A beautiful, interactive form to capture your style, budget, and priorities.
+2. **Real-time Loading**: Watch as the AI "crafts" your vibe with live status updates.
+3. **Mood Board**: High-quality AI-generated images of your styled dorm room.
+4. **Audio Walkthrough**: A custom narration explaining your room's setup.
+5. **Shopping List**: Curated links to Amazon and IKEA for the recommended products.
 
----
+## 📜 License
 
-## Future Development
+This project is for educational purposes as part of a Trae Solo Builder session.
 
-Potential future enhancements include:
+## 👥 Judges' Guide
 
-- AI-powered roommate compatibility scoring
-- Real-time roommate matching
-- Enhanced room visualization
-- Mobile application support
-- Recommendation personalization improvements
+### Quick Start for Hackathon Evaluation
 
----
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd IG-1000011
+   ```
 
-## Project Status
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-This repository serves as a portfolio showcase of the DormVibe project and demonstrates frontend development, UI/UX design, system architecture, user testing, and product thinking.
+3. **Set up environment variables**:
+   - Create a `.env` file in the root directory
+   - Add your MiniMax API key (provided separately to judges):
+     ```env
+     MINIMAX_API_KEY=your_minimax_api_key_here
+     MINIMAX_BASE_URL=https://api.minimaxi.com/v1
+     MINIMAX_TTS_MODEL=speech-2.8-hd
+     MINIMAX_TTS_VOICE_ID=English_expressive_narrator
+     ```
 
----
+4. **Run the application**:
+   ```bash
+   npm run dev
+   ```
 
-## Author
+5. **Access the app**:
+   - Frontend: Open your browser to the URL printed in the terminal (usually `http://localhost:5173/`)
+   - Backend: Running at `http://localhost:3001`
 
-**Aditya Agrawal**
+### Testing the Features
 
-BSc (Hons) Computer Science with Artificial Intelligence  
-University of Nottingham Ningbo China
+1. **Vibe Quiz**:
+   - Complete the interactive quiz with your style preferences
+   - Observe the real-time loading screen as AI processes your inputs
 
-GitHub: https://github.com/bugfixer2627
+2. **Mood Board**:
+   - View the generated mood board with AI-created room designs
+   - Note the quality and relevance to your quiz answers
 
-LinkedIn: https://linkedin.com/in/aditya-agrawal-316753400
+3. **Audio Walkthrough**:
+   - Listen to the AI-generated narration explaining your room setup
+   - Check for clear audio quality and relevant content
 
----
+4. **Shopping List**:
+   - Review the curated product links to Amazon and IKEA
+   - Verify that products match the style and budget specified
 
-## License
+### Technical Evaluation Points
 
-Educational and portfolio use only.
+- **Performance**: App responsiveness and loading times
+- **AI Integration**: Quality of generated content (images, audio, recommendations)
+- **User Experience**: Intuitive interface and smooth navigation
+- **Technical Implementation**: Code structure and architecture
+- **Innovation**: Unique approach to dorm room styling
+
+### Troubleshooting
+
+- If you encounter API errors, ensure your MiniMax API key is correctly set in the `.env` file
+- If the frontend doesn't connect to the backend, check that both services are running (frontend on port 5173, backend on port 3001)
+- For any other issues, please contact the development team
