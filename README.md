@@ -17,8 +17,8 @@ DormVibe was recognized at UNNC AI-Hackathon 2026:
 
 ## 🔗 Live Demo & Screenshots
 
-- **Live demo:** [Live Demo](doc/Live_Demo.mp4)
-- **Screenshots:** Available in [doc/Screenshots]
+- **Live demo:** [Live Demo](docs/Live_Demo.mp4)
+- **Screenshots:** Available in [docs/Screenshots]
 
 ---
 
