@@ -132,26 +132,6 @@ docs/      Product requirements (PRD) & technical architecture
 
 ---
 
-## 👤 My Contribution
-
-DormVibe was built by a team; this section reflects the parts I owned. My focus was the **product and commercial side** — defining what to build, why it matters to students, and how it makes money — alongside specific feature work.
-
-**Product & business (primary focus)**
-- Shaped the product direction: which problems to solve, why each feature matters to students, and how features map to the target user.
-- Developed the **business model and monetization** thinking — where the product creates and captures value.
-- Led **market research** and contributed to **pitching** the concept.
-
-**Features I owned / built**
-- **Second-Hand Marketplace** — the peer-to-peer buy/sell experience for used dorm items (affordability + sustainability angle).
-- **Checkout Flow** — cart-to-checkout journey.
-- **Recommendation logic** — matching products to a student's style and budget.
-
----
-
-## 👥 Team & Credits
-
-DormVibe was originally created during a university hackathon by a team. This repository is my personal presentation of the project, focused on the parts I contributed.
-
 ## 📜 License
 
 This project was built for educational purposes.
