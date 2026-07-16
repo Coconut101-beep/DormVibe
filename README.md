@@ -1,144 +1,147 @@
 # DormVibe 🏠✨
 
-**DormVibe** is an AI-powered dorm room styling assistant for college students. By taking a simple "vibe quiz," students can generate a complete room design package including a mood board and an audio walkthrough—all powered by the MiniMax AI API.
+> An AI-powered dorm-styling assistant that turns a 60-second “vibe quiz” into a complete room design package — mood board, audio walkthrough, and a ready-to-buy shopping list.
 
-## Vercel Link:
-[https://ig-1000011.vercel.app/](https://ig-1000011-azurelightning7-azurelightning7s-projects.vercel.app/)
+DormVibe helps college students design a room they love without the overwhelm of browsing hundreds of products. Answer a short quiz about your style, budget, and priorities, and the app generates a personalized room concept, a narrated walkthrough, and curated products — including a peer-to-peer second-hand marketplace to keep it affordable and sustainable.
+
+---
+
+## 🔗 Live Demo & Screenshots
+
+- **Live demo:** _coming soon_
+- **Screenshots:** _coming soon_
+
+---
+
+## 🎯 The Problem
+
+Incoming students want a dorm that feels like *theirs*, but they face three friction points:
+
+1. **Decision overload** — endless furniture and decor options with no sense of what works together.
+2. **Budget pressure** — students are price-sensitive and often can't justify buying everything new.
+3. **No visualization** — it's hard to picture a finished room before spending money.
+
+DormVibe compresses “inspiration → plan → purchase” into a single guided flow.
+
+## 💡 The Solution & Product Flow
+
+```
+Vibe Quiz  →  AI Generation  →  Mood Board / Room DNA  →  Customize  →  Shopping List + Marketplace  →  Checkout
+```
+
+1. **Vibe Quiz** — captures interests, color palette, budget, and room priority.
+2. **Real-time generation** — live progress updates while the AI builds the concept (via Server-Sent Events).
+3. **Mood Board** — AI-generated images of the styled room.
+4. **Audio Walkthrough** — narrated explanation of the design choices.
+5. **Shopping List** — curated products with retail links.
+6. **Second-Hand Marketplace** — peer-to-peer listings so students can buy/sell used items affordably and sustainably.
+7. **Checkout** — cart and checkout flow to complete the plan.
+
+## 🌟 Key Features
+
+| Feature | What it does |
+|---|---|
+| **Vibe Quiz** | Interactive interest / palette / budget / priority capture that drives personalization |
+| **AI Mood Board** | High-quality generated room imagery from quiz inputs |
+| **Audio Walkthrough** | AI-narrated tour explaining the room setup |
+| **Recommendation logic** | Matches products to the student's style and budget |
+| **Second-Hand Marketplace** | Peer-to-peer listings (price, pickup location, condition, free items) |
+| **Checkout Flow** | Cart management through to checkout |
+
+---
+
+## 🏗️ Architecture
+
+DormVibe is a full-stack TypeScript app with a React frontend and an Express backend that orchestrates the MiniMax AI APIs (text, image, and text-to-speech). Generation progress is streamed to the client in real time via Server-Sent Events.
+
+```
+User Browser  →  React (Vite) Frontend  →  Express Backend  →  MiniMax AI APIs (text · image · TTS)
+                                              └→ SSE stream (live generation progress)
+```
+
+Deeper documentation lives in [`docs/`](docs):
+
+- [Product Requirements (PRD)](docs/PRODUCT_REQUIREMENTS.md)
+- [Technical Architecture](docs/TECHNICAL_ARCHITECTURE.md)
+
+## 🧰 Tech Stack
+
+- **Frontend:** React 18 (Vite), TypeScript, Tailwind CSS, Framer Motion, Zustand, React Router
+- **Backend:** Node.js, Express, Axios
+- **AI:** MiniMax API (text, image, TTS)
+- **Realtime:** Server-Sent Events (SSE) for live generation progress
+- **Deployment:** Vercel
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/) (usually comes with Node.js)
+- [Node.js](https://nodejs.org/) v18+
+- npm (ships with Node.js)
+- A MiniMax API key ([get one here](https://www.minimaxi.com))
 
 ### Installation
 
-1. **Clone the repository** (if you haven't already):
-   ```bash
-   git clone <repository-url>
-   cd dormvibe
-   ```
+```bash
+# 1. Clone the repository
+git clone <repository-url>
+cd dormvibe
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+# 2. Install dependencies
+npm install
 
-### 🔑 Environment Variables
-
-Create a `.env` file in the root directory (if it doesn't exist) and add your MiniMax API key:
-
-```env
-MINIMAX_API_KEY=your_minimax_api_key_here
-MINIMAX_BASE_URL=https://api.minimaxi.com/v1
-MINIMAX_TTS_MODEL=speech-2.8-hd
-MINIMAX_TTS_VOICE_ID=English_expressive_narrator
+# 3. Set up environment variables
+cp .env.example .env
+# then open .env and add your MiniMax API key
 ```
 
-> **Note**: Never commit your `.env` file or expose your API key in frontend code.
-
-### 🛠️ Running the App
-
-You can run both the frontend and backend concurrently using a single command:
+### Running the app
 
 ```bash
 npm run dev
 ```
 
-- **Frontend**: Vite will print the URL in your terminal (usually `http://localhost:5173/`, or the next available port)
-- **Backend**: `http://localhost:3001`
+- **Frontend:** Vite prints the URL (usually `http://localhost:5173/`)
+- **Backend:** runs at `http://localhost:3001` (the frontend proxies API requests automatically)
 
-The frontend is configured to proxy API requests to the backend automatically.
+> ⚠️ Never commit your `.env` file or expose your API key in frontend code. The app writes AI-generated images and audio to `api/public/generated/` at runtime — these are gitignored and recreated automatically.
 
-## 🏗️ Tech Stack
-
-- **Frontend**: React (with Vite), Tailwind CSS, Framer Motion, Lucide React, Zustand
-- **Backend**: Node.js, Express, Axios
-- **AI Integration**: MiniMax API (Text, Image, TTS)
-- **Communication**: Server-Sent Events (SSE) for real-time generation progress
+---
 
 ## 📂 Project Structure
 
-- `src/`: React frontend source code
-- `api/`: Express backend source code
-- `shared/`: Shared TypeScript types
-- `public/`: Static assets
+```
+src/       React frontend (pages, components, store, hooks)
+api/       Express backend (routes + MiniMax service integrations)
+shared/    Shared TypeScript types
+public/    Static assets
+docs/      Product requirements (PRD) & technical architecture
+```
 
-## 🌟 Features
+---
 
-1. **Vibe Quiz**: A beautiful, interactive form to capture your style, budget, and priorities.
-2. **Real-time Loading**: Watch as the AI "crafts" your vibe with live status updates.
-3. **Mood Board**: High-quality AI-generated images of your styled dorm room.
-4. **Audio Walkthrough**: A custom narration explaining your room's setup.
-5. **Shopping List**: Curated links to Amazon and IKEA for the recommended products.
+## 👤 My Contribution
+
+DormVibe was built by a team; this section reflects the parts I owned. My focus was the **product and commercial side** — defining what to build, why it matters to students, and how it makes money — alongside specific feature work.
+
+**Product & business (primary focus)**
+- Shaped the product direction: which problems to solve, why each feature matters to students, and how features map to the target user.
+- Developed the **business model and monetization** thinking — where the product creates and captures value.
+- Led **market research** and contributed to **pitching** the concept.
+
+**Features I owned / built**
+- **Second-Hand Marketplace** — the peer-to-peer buy/sell experience for used dorm items (affordability + sustainability angle).
+- **Checkout Flow** — cart-to-checkout journey.
+- **Recommendation logic** — matching products to a student's style and budget.
+
+---
+
+## 👥 Team & Credits
+
+DormVibe was originally created during a university hackathon by a team. This repository is my personal presentation of the project, focused on the parts I contributed.
 
 ## 📜 License
 
-This project is for educational purposes as part of a Trae Solo Builder session.
-
-## 👥 Judges' Guide
-
-### Quick Start for Hackathon Evaluation
-
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd IG-1000011
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Set up environment variables**:
-   - Create a `.env` file in the root directory
-   - Add your MiniMax API key (provided separately to judges):
-     ```env
-     MINIMAX_API_KEY=your_minimax_api_key_here
-     MINIMAX_BASE_URL=https://api.minimaxi.com/v1
-     MINIMAX_TTS_MODEL=speech-2.8-hd
-     MINIMAX_TTS_VOICE_ID=English_expressive_narrator
-     ```
-
-4. **Run the application**:
-   ```bash
-   npm run dev
-   ```
-
-5. **Access the app**:
-   - Frontend: Open your browser to the URL printed in the terminal (usually `http://localhost:5173/`)
-   - Backend: Running at `http://localhost:3001`
-
-### Testing the Features
-
-1. **Vibe Quiz**:
-   - Complete the interactive quiz with your style preferences
-   - Observe the real-time loading screen as AI processes your inputs
-
-2. **Mood Board**:
-   - View the generated mood board with AI-created room designs
-   - Note the quality and relevance to your quiz answers
-
-3. **Audio Walkthrough**:
-   - Listen to the AI-generated narration explaining your room setup
-   - Check for clear audio quality and relevant content
-
-4. **Shopping List**:
-   - Review the curated product links to Amazon and IKEA
-   - Verify that products match the style and budget specified
-
-### Technical Evaluation Points
-
-- **Performance**: App responsiveness and loading times
-- **AI Integration**: Quality of generated content (images, audio, recommendations)
-- **User Experience**: Intuitive interface and smooth navigation
-- **Technical Implementation**: Code structure and architecture
-- **Innovation**: Unique approach to dorm room styling
-
-### Troubleshooting
-
-- If you encounter API errors, ensure your MiniMax API key is correctly set in the `.env` file
-- If the frontend doesn't connect to the backend, check that both services are running (frontend on port 5173, backend on port 3001)
-- For any other issues, please contact the development team
+This project was built for educational purposes.
