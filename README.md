@@ -6,10 +6,19 @@ DormVibe helps college students design a room they love without the overwhelm of
 
 ---
 
+## 🏆 Awards
+
+DormVibe was recognized at UNNC AI-Hackathon 2026:
+
+- 🥈 **Second Place** — Overall
+- 💡 **Most Valuable Business Idea**
+
+---
+
 ## 🔗 Live Demo & Screenshots
 
-- **Live demo:** _coming soon_
-- **Screenshots:** _coming soon_
+- **Live demo:** [Live Demo](doc/Live_Demo.mp4)
+- **Screenshots:** Available in [doc/Screenshots]
 
 ---
 
